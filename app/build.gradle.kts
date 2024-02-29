@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("plugin.serialization") version "1.9.10"
 }
 
 android {
@@ -75,5 +76,10 @@ dependencies {
 
     // Splash API
     implementation ("androidx.core:core-splashscreen:1.0.1")
+
+    // Supabase
+    implementation(platform("io.github.jan-tennert.supabase:bom:2.2.0-rc-1"))
+    implementation("io.github.jan-tennert.supabase:postgrest-kt")
+    implementation("io.ktor:ktor-client-android:2.3.8")
 
 }
