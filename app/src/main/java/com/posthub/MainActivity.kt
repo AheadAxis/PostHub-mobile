@@ -36,36 +36,39 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun PostList(viewModel: PostsViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
-    LazyColumn(contentPadding = PaddingValues(20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
-        items(viewModel.states.value.posts) { post ->
-            Card() {
-                Column(Modifier.padding(20.dp)) {
-                    post.title?.let {
-                        Text(
-                            text = it,
-                            style = MaterialTheme.typography.headlineSmall,
-                            maxLines = 3,
-                            overflow = TextOverflow.Ellipsis,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                    }
-                    Spacer(modifier = Modifier.height(4.dp))
-                    post.content?.let { text ->
+    Column {
+        Text("Posts", modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp), fontWeight = FontWeight.SemiBold, style = MaterialTheme.typography.headlineMedium)
+        LazyColumn(contentPadding = PaddingValues(horizontal = 20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+            items(viewModel.states.value.posts) { post ->
+                Card() {
+                    Column(Modifier.padding(20.dp)) {
+                        post.title?.let {
+                            Text(
+                                text = it,
+                                style = MaterialTheme.typography.titleMedium,
+                                maxLines = 3,
+                                overflow = TextOverflow.Ellipsis,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(4.dp))
+                        post.content?.let { text ->
 //                        Text(
 //                            text = Html.fromHtml(text, Html.FROM_HTML_MODE_LEGACY),
 //                            maxLines = 5,
 //                            overflow = TextOverflow.Ellipsis
 //                        )
-                        AndroidView(
-                            factory = {
-                                TextView(it)
-                            },
-                            update = {
-                                it.text = Html.fromHtml(text)
-                            }
-                        )
-                    }
+                            AndroidView(
+                                factory = {
+                                    TextView(it)
+                                },
+                                update = {
+                                    it.text = Html.fromHtml(text)
+                                }
+                            )
+                        }
 
+                    }
                 }
             }
         }
