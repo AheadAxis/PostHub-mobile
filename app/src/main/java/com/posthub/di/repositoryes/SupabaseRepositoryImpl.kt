@@ -6,10 +6,6 @@ import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.postgrest.Postgrest
 import io.github.jan.supabase.postgrest.from
 
-interface SupabaseRepository {
-    suspend fun getPosts(): List<Post>
-}
-
 class SupabaseRepositoryImpl : SupabaseRepository {
 
     private val supabase: SupabaseClient = createSupabaseClient(
