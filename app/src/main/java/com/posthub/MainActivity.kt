@@ -18,8 +18,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import com.posthub.modules.appModule
 import com.posthub.ui.theme.PostHubTheme
 import com.posthub.viewModels.PostsViewModel
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +33,11 @@ class MainActivity : ComponentActivity() {
                     PostList()
                 }
             }
+        }
+        // Start Koin
+        startKoin {
+            androidContext(this@MainActivity)
+            modules(appModule)
         }
     }
 }

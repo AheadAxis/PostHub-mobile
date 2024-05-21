@@ -82,4 +82,5 @@ dependencies {
     implementation("io.github.jan-tennert.supabase:postgrest-kt")
     implementation("io.ktor:ktor-client-android:2.3.8")
 
+    implementation("io.insert-koin:koin-androidx-compose:3.5.6")
 }
